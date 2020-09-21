@@ -38,7 +38,7 @@ function login() {
       </div>
       <div className="login_right">
         <Card>
-          <CardContent>
+          <CardContent className="cardContent">
             <form className="login_form">
               <input
                 class="login_input"
@@ -51,7 +51,7 @@ function login() {
               ></input>
               <button class=" login_input login_button">Iniciar sesión</button>
             </form>
-            <Link>¿Olvidaste tu contraseña?</Link>
+            <Link className="resetPassword">¿Olvidaste tu contraseña?</Link>
             <div className="separador"></div>
             <button class="register_button">Crear cuenta nueva</button>
           </CardContent>

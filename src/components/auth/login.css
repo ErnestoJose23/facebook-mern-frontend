@@ -1,5 +1,6 @@
 .logo_login {
   height: 150px;
+  margin-left: -30px;
 }
 
 .login {
@@ -23,6 +24,7 @@
 }
 
 .login_left > p {
+  margin-top: -10px;
   font-size: 30px;
 }
 
@@ -60,4 +62,26 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.register_button {
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  line-height: 48px;
+  padding: 0 16px;
+  color: white;
+  font-weight: bold;
+  background-color: #42b72a;
+  cursor: pointer;
+}
+
+.cardContent {
+  text-align: center;
+}
+
+.resetPassword {
+  color: #1877f2;
+  font-size: 14px;
+  font-weight: 500;
 }
