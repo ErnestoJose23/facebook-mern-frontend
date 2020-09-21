@@ -37,7 +37,7 @@ function login() {
         </p>
       </div>
       <div className="login_right">
-        <Card>
+        <Card className="Card">
           <CardContent className="cardContent">
             <form className="login_form">
               <input
