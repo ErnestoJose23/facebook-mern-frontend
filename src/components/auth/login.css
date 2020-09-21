@@ -1,0 +1,31 @@
+.logo_login {
+  height: 150px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.separador {
+  align-items: center;
+  border-bottom: 1px solid #dadde1;
+  display: flex;
+  margin: 20px 16px;
+  text-align: center;
+}
+
+.login_left {
+  padding-right: 46px;
+
+  flex: 0.35;
+}
+
+.login_left > p {
+  font-size: 30px;
+}
+
+.login_right {
+  flex: 0.25;
+}

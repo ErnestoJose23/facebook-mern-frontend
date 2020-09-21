@@ -1,0 +1,9 @@
+.App {
+  background: #f0f2f5;
+  height: 100vh;
+}
+
+.App > .login {
+  padding-top: 20vh;
+  align-items: center;
+}

@@ -3,7 +3,7 @@ import Header from "../../components/layouts/header";
 
 function home() {
   return (
-    <div>
+    <div className="Home">
       <Header />
       <h1>Home</h1>
     </div>
