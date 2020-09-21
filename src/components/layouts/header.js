@@ -7,7 +7,7 @@ import StorefrontIcon from "@material-ui/icons/Storefront";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import ChatIcon from "@material-ui/icons/Chat";
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { Avatar, IconButton } from "@material-ui/core";
 
 function header() {
@@ -23,33 +23,29 @@ function header() {
       </div>
       <div className="header_middle">
         <div className="header_option">
-          <HomeIcon fontSize="large" />
+          <HomeIcon />
         </div>
         <div className="header_option">
-          <OndemandVideoIcon fontSize="large" />
+          <OndemandVideoIcon />
         </div>
         <div className="header_option">
-          <StorefrontIcon fontSize="large" />
+          <StorefrontIcon />
         </div>
         <div className="header_option">
-          <SupervisedUserCircleIcon fontSize="large" />
+          <SupervisedUserCircleIcon />
         </div>
         <div className="header_option">
-          <VideogameAssetIcon fontSize="large" />
+          <VideogameAssetIcon />
         </div>
       </div>
       <div className="header_right">
         <div className="header_info">
-          <div className="header_option">Create</div>
-          <div className="header_option">
-            <IconButton>
-              <ChatIcon />
-            </IconButton>
+          <div className="header_right_info">Create</div>
+          <div className="header_right_info">
+            <WhatsAppIcon fontSize="small" />
           </div>
-          <div className="header_option">
-            <IconButton>
-              <NotificationsIcon />
-            </IconButton>
+          <div className="header_right_info">
+            <NotificationsIcon fontSize="small" />
           </div>
           <Avatar></Avatar>
         </div>

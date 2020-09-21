@@ -3,7 +3,7 @@
 }
 
 .header {
-  padding: 15px 20px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   position: sticky;
@@ -58,4 +58,16 @@
 .header_info {
   display: flex;
   align-items: center;
+}
+
+.header_right_info {
+  background-color: #e4e6eb;
+  border-radius: 999px;
+  padding: 10px;
+  margin-right: 12px;
+}
+
+.header_right_info:hover {
+  cursor: pointer;
+  background-color: #d0d2d8;
 }
