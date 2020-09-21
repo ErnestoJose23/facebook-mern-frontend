@@ -1,4 +1,4 @@
-.header_left > img {
+.Logo {
   height: 40px;
 }
 
@@ -44,7 +44,7 @@
   align-items: center;
   padding: 0 30px;
   cursor: pointer;
-  color: gray;
+  color: gray !important;
 }
 
 .header_option:hover {
@@ -70,4 +70,9 @@
 .header_right_info:hover {
   cursor: pointer;
   background-color: #d0d2d8;
+}
+
+.header_option > a {
+  text-decoration: none;
+  color: gray;
 }

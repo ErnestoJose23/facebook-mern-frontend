@@ -9,12 +9,18 @@ import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { Avatar, IconButton } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 function header() {
   return (
     <div className="header">
       <div className="header_left">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" />
+        <Link to="/">
+          <img
+            className="Logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
+          />
+        </Link>
         <div className="header_input">
           <SearchIcon />
 
@@ -23,7 +29,9 @@ function header() {
       </div>
       <div className="header_middle">
         <div className="header_option">
-          <HomeIcon />
+          <Link to="/">
+            <HomeIcon />
+          </Link>
         </div>
         <div className="header_option">
           <OndemandVideoIcon />
