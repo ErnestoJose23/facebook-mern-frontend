@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Home from "./components/pages/home";
-import Header from "./components/layouts/header";
+
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 
@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       <div className="App">
         <Router>
-          <Header />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
