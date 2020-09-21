@@ -29,3 +29,35 @@
 .login_right {
   flex: 0.25;
 }
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+}
+.login_input {
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 302px;
+  font-size: 17px;
+  width: 364px;
+  border-radius: 6px;
+  font-size: 17px;
+  padding: 14px 16px;
+  width: 330px;
+  border: 1px solid #dddfe2;
+  color: #1d2129;
+  outline-style: none;
+}
+
+.login_button {
+  background-color: #1877f2;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 48px;
+  padding: 0 16px;
+  width: 366px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

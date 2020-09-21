@@ -39,13 +39,17 @@ function login() {
       <div className="login_right">
         <Card>
           <CardContent>
-            <form>
+            <form className="login_form">
               <input
                 class="login_input"
                 placeholder="Correo electrónico o número de teléfono"
               ></input>
-              <input class="login_input" placeholder="Contraseña"></input>
-              <button class="login_button">Iniciar sesión</button>
+              <input
+                class="login_input"
+                placeholder="Contraseña"
+                type="password"
+              ></input>
+              <button class=" login_input login_button">Iniciar sesión</button>
             </form>
             <Link>¿Olvidaste tu contraseña?</Link>
             <div className="separador"></div>
