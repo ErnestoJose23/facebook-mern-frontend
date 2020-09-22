@@ -5,6 +5,7 @@ import UserContext from "./context/UserContext";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Axios from "axios";
+import PrivateRoute from "./components/auth/privateRoute";
 
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
@@ -26,7 +27,15 @@ function App() {
         null,
         { headers: { "x-auth-token": token } }
       );
-      console.log(tokenRes.data);
+      if (tokenRes.data) {
+        const userRes = await Axios.get("http://localhost:5000/users/", {
+          headers: { "x-auth-token": token },
+        });
+        setUserData({
+          token,
+          user: userRes.data,
+        });
+      }
     };
 
     checkLoggedIn();
@@ -37,7 +46,7 @@ function App() {
       <Router>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </Switch>

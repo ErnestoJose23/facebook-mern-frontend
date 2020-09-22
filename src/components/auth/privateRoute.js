@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, useHistory } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
-function PrivateRoute({ component: Component, authed, ...rest }) {
+function PrivateRoute({ component: Component }) {
+  const { userData, setUserData } = useContext(UserContext);
   return (
     <Route
-      {...rest}
       render={(props) =>
-        authed === true ? (
+        userData.token != undefined ? (
           <Component {...props} />
         ) : (
           <Redirect
