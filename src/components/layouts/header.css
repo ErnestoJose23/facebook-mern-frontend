@@ -80,3 +80,8 @@
 .header_avatar {
   cursor: pointer;
 }
+
+.header_menu {
+  margin-top: 40px;
+  margin-left: 10px;
+}

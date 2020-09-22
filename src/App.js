@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import Home from "./components/pages/home";
-
-import PrivateRoute from "./components/auth/privateRoute";
+import UserContext from "./context/UserContext";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 
