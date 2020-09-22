@@ -41,7 +41,7 @@ function Login() {
           <CardContent className="cardContent">
             <form className="login_form">
               <input
-                class="login_input"
+                className="login_input"
                 placeholder="Correo electrónico o número de teléfono"
               ></input>
               <input
