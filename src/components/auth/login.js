@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-function login() {
+function Login() {
   return (
     <div className="login">
       <div className="login_left">
@@ -65,4 +65,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;
