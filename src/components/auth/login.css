@@ -89,3 +89,52 @@
 .Card {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1) !important;
 }
+
+.register_input {
+  font-size: 15px;
+  line-height: 16px;
+  outline: none !important;
+  border-color: #ccd0d5;
+  width: 375px;
+  border-radius: 5px;
+  margin: 0;
+  padding: 11px;
+  background: #f5f6f7;
+  border: 1px solid #ccd0d5;
+  margin: 5px;
+}
+.register_name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name_reg {
+  width: 170px;
+}
+
+.register_politics {
+  color: #777;
+  font-size: 11px;
+}
+
+.button_modal {
+  background: none;
+  background-color: #00a400;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  height: 36px;
+  overflow: hidden;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-shadow: none;
+}
+
+.button_class {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+}

@@ -4,8 +4,9 @@ import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import Modal from "@material-ui/core/Modal";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
   },
@@ -20,9 +21,81 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
-});
+  paper: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
+function getModalStyle() {
+  const top = 40;
+  const left = 45;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
 
 function Login() {
+  const classes = useStyles();
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const bodyModal = (
+    <div style={modalStyle} className={classes.paper}>
+      <h1 id="simple-modal-title">Registrate</h1>
+      <p id="simple-modal-description">Es rápido y fácil.</p>
+      <div className="separador"></div>
+      <form className="register_form">
+        <div className="register_name">
+          <input
+            className="register_input name_reg"
+            placeholder="Nombre"
+          ></input>
+          <input
+            className="register_input name_reg"
+            placeholder="Apellido"
+          ></input>
+        </div>
+        <input
+          className="register_input"
+          placeholder="Correo electrónico"
+        ></input>
+        <input
+          className="register_input"
+          placeholder="Contraseña nueva"
+        ></input>
+        <p className="register_politics">
+          Al hacer clic en "Registrarte", aceptas nuestras Condiciones. Obtén
+          más información sobre cómo recopilamos, usamos y compartimos tus datos
+          en la Política de datos, así como el uso que hacemos de las cookies y
+          tecnologías similares en la Política de cookies. Es posible que te
+          enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
+        </p>
+        <div className="button_class">
+          <button class=" button_modal" type="button">
+            Registrate
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
   return (
     <div className="login">
       <div className="login_left">
@@ -45,15 +118,19 @@ function Login() {
                 placeholder="Correo electrónico o número de teléfono"
               ></input>
               <input
-                class="login_input"
+                className="login_input"
                 placeholder="Contraseña"
                 type="password"
               ></input>
-              <button class=" login_input login_button">Iniciar sesión</button>
+              <button className=" login_input login_button">
+                Iniciar sesión
+              </button>
             </form>
             <Link className="resetPassword">¿Olvidaste tu contraseña?</Link>
             <div className="separador"></div>
-            <button class="register_button">Crear cuenta nueva</button>
+            <button class="register_button" type="button" onClick={handleOpen}>
+              Crear cuenta nueva
+            </button>
           </CardContent>
         </Card>
         <p>
@@ -61,6 +138,14 @@ function Login() {
           negocio.
         </p>
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {bodyModal}
+      </Modal>
     </div>
   );
 }

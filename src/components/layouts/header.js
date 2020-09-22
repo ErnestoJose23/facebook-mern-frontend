@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
@@ -9,12 +9,15 @@ import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { Avatar, IconButton } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
+import UserContext from "../../context/UserContext";
 import MenuItem from "@material-ui/core/MenuItem";
 
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { userData, setUserData } = useContext(UserContext);
+  let history = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +26,16 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logout = () => {
+    setUserData({
+      token: undefined,
+      user: undefined,
+    });
+    localStorage.setItem("auth-token", "");
+    history.push("/login");
+  };
+
   return (
     <div className="header">
       <div className="header_left">
@@ -84,7 +97,7 @@ function Header() {
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
         </div>
       </div>
