@@ -14,10 +14,11 @@ function App() {
     token: undefined,
     user: undefined,
   });
+  const [usern, setUsern] = useState("");
+  let token = localStorage.getItem("auth-token");
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
       if (token === null) {
         localStorage.setItem("auth-token", "");
         token = "";
@@ -31,9 +32,10 @@ function App() {
         const userRes = await Axios.get("http://localhost:5000/users/", {
           headers: { "x-auth-token": token },
         });
+
         setUserData({
-          token,
-          user: userRes.data,
+          token: token,
+          user: userRes.data.displayName,
         });
       }
     };
@@ -46,7 +48,7 @@ function App() {
       <Router>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
-            <PrivateRoute exact path="/" component={Home} />
+            <PrivateRoute exact path="/" component={Home} user={userData} />
 
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

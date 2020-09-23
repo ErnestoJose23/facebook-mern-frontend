@@ -95,7 +95,7 @@ function Header() {
             onClose={handleClose}
             className="header_menu"
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}></MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>

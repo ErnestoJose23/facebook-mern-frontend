@@ -65,7 +65,7 @@ function Login() {
         <Card className="Card">
           <CardContent className="cardContent">
             {LoginForm}
-            <Link className="resetPassword">¿Olvidaste tu contraseña?</Link>
+            <a className="resetPassword">¿Olvidaste tu contraseña?</a>
             <div className="separador"></div>
             <Register />
           </CardContent>

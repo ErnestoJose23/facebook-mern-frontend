@@ -132,7 +132,7 @@ function Register() {
           enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
         </p>
         <div className="button_class">
-          <button class=" button_modal" type="submit">
+          <button className=" button_modal" type="submit">
             Registrate
           </button>
         </div>
@@ -141,7 +141,7 @@ function Register() {
   );
   return (
     <div>
-      <button class="register_button" type="button" onClick={handleOpen}>
+      <button className="register_button" type="button" onClick={handleOpen}>
         Crear cuenta nueva
       </button>
       <Modal
