@@ -8,7 +8,7 @@ function PrivateRoute({ component: Component }) {
   return (
     <Route
       render={(props) =>
-        userData.user ? (
+        userData.token != undefined ? (
           <Component {...props} />
         ) : (
           <Redirect
