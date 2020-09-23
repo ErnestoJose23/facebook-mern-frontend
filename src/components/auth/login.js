@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "./login.css";
 import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
+import Axios from "axios";
+import UserContext from "../../context/UserContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,9 +46,13 @@ function getModalStyle() {
 
 function Login() {
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
+  const [modalStyle] = useState(getModalStyle);
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [passwordCheck, setPasswordCheck] = useState();
+  const [name, setName] = useState();
+  const [surname, setSurname] = useState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -56,29 +62,65 @@ function Login() {
     setOpen(false);
   };
 
+  const { setUserData } = useContext(UserContext);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const displayName = name + " " + surname;
+    console.log(displayName);
+    const newUser = { email, password, passwordCheck, displayName };
+    const registerRes = await Axios.post(
+      "http://localhost:5000/users/register",
+      newUser
+    );
+    const loginRes = await Axios.post("http://localhost:5000/users/login", {
+      email,
+      password,
+    });
+    setUserData({ token: loginRes.data.token });
+  };
+
   const bodyModal = (
     <div style={modalStyle} className={classes.paper}>
       <h1 id="simple-modal-title">Registrate</h1>
       <p id="simple-modal-description">Es rápido y fácil.</p>
+
       <div className="separador"></div>
-      <form className="register_form">
+      <form className="register_form" onSubmit={submit}>
         <div className="register_name">
           <input
             className="register_input name_reg"
             placeholder="Nombre"
+            id="register-name"
+            onChange={(e) => setName(e.target.value)}
           ></input>
           <input
             className="register_input name_reg"
             placeholder="Apellido"
+            id="register-surname"
+            onChange={(e) => setSurname(e.target.value)}
           ></input>
         </div>
         <input
           className="register_input"
           placeholder="Correo electrónico"
+          id="register-email"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
         ></input>
         <input
           className="register_input"
           placeholder="Contraseña nueva"
+          id="register-password"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <input
+          className="register_input"
+          placeholder="Repite la contraseña "
+          id="register-password1"
+          type="password"
+          onChange={(e) => setPasswordCheck(e.target.value)}
         ></input>
         <p className="register_politics">
           Al hacer clic en "Registrarte", aceptas nuestras Condiciones. Obtén
@@ -88,7 +130,7 @@ function Login() {
           enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
         </p>
         <div className="button_class">
-          <button class=" button_modal" type="button">
+          <button class=" button_modal" type="submit">
             Registrate
           </button>
         </div>
