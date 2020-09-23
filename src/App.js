@@ -14,7 +14,6 @@ function App() {
     token: undefined,
     user: undefined,
   });
-  const [usern, setUsern] = useState("");
   let token = localStorage.getItem("auth-token");
 
   useEffect(() => {
@@ -38,17 +37,19 @@ function App() {
           user: userRes.data.displayName,
         });
       }
+      console.log("En app");
+      console.log(userData);
     };
 
     checkLoggedIn();
-  }, []);
+  }, [userData.token]);
 
   return (
     <div className="App">
       <Router>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
-            <PrivateRoute exact path="/" component={Home} user={userData} />
+            <PrivateRoute exact path="/" component={Home} />
 
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

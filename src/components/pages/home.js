@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/layouts/header";
 
-function home() {
+function Home() {
   return (
     <div className="Home">
       <Header />
@@ -10,4 +10,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;

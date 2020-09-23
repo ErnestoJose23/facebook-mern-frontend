@@ -4,20 +4,20 @@ import { Provider } from "react-redux";
 import { Redirect, Route, useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
-function PrivateRoute({ component: Component, user }) {
+function PrivateRoute({ component: Component }) {
   const { userData, setUserData } = useContext(UserContext);
-  useEffect(() => {
-    console.log("Aqui");
-    console.log(user);
-  }, []);
+  const token = localStorage.getItem("auth-token");
+
   return (
     <Route
       render={(props) =>
-        userData.token != undefined ? (
+        token != "" ? (
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
+            to={{
+              pathname: "/login",
+            }}
           />
         )
       }

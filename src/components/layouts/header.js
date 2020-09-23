@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
@@ -95,7 +95,7 @@ function Header() {
             onClose={handleClose}
             className="header_menu"
           >
-            <MenuItem onClick={handleClose}></MenuItem>
+            <MenuItem onClick={handleClose}>{userData.user}</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>

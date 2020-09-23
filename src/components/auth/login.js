@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./login.css";
 import Card from "@material-ui/core/Card";
@@ -8,7 +8,7 @@ import Axios from "axios";
 import UserContext from "../../context/UserContext";
 import Register from "./register";
 
-function Login() {
+function Login(state, token) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -22,11 +22,16 @@ function Login() {
       email,
       password,
     });
+    console.log(loginRes);
     setUserData({ token: loginRes.data.token, user: loginRes.data.user });
     localStorage.setItem("auth-token", loginRes.data.token);
 
     history.push("/");
   };
+
+  useEffect(() => {
+    console.log(token);
+  }, []);
 
   const LoginForm = (
     <form className="login_form" onSubmit={submit}>
@@ -50,6 +55,7 @@ function Login() {
 
   return (
     <div className="login">
+      <Link to="/">Lok</Link>
       <div className="login_left">
         <img
           className="logo_login"
