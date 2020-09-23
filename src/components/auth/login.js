@@ -12,7 +12,7 @@ function Login(state, token) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const submit = async (e) => {
@@ -23,9 +23,9 @@ function Login(state, token) {
       password,
     });
     console.log(loginRes);
-    setUserData({ token: loginRes.data.token, user: loginRes.data.user });
+    setUserData([{ token: loginRes.data.token, user: loginRes.data.user }]);
     localStorage.setItem("auth-token", loginRes.data.token);
-
+    console.log(userData);
     history.push("/");
   };
 
@@ -55,7 +55,6 @@ function Login(state, token) {
 
   return (
     <div className="login">
-      <Link to="/">Lok</Link>
       <div className="login_left">
         <img
           className="logo_login"

@@ -36,6 +36,10 @@ function Header() {
     history.push("/login");
   };
 
+  useEffect(() => {
+    console.log(userData.displayName);
+  }, []);
+
   return (
     <div className="header">
       <div className="header_left">
