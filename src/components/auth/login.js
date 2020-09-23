@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import "./login.css";
 import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
@@ -63,6 +64,7 @@ function Login() {
   };
 
   const { setUserData } = useContext(UserContext);
+  const history = useHistory();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -77,7 +79,9 @@ function Login() {
       email,
       password,
     });
-    setUserData({ token: loginRes.data.token });
+    setUserData({ token: loginRes.data.token, user: loginRes.data.user });
+    localStorage.setItem("auth-token", loginRes.data.token);
+    history.push("/");
   };
 
   const bodyModal = (
