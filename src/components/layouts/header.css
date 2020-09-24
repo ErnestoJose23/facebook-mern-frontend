@@ -3,7 +3,7 @@
 }
 
 .header {
-  padding: 5px 20px;
+  padding: 0px 20px;
   display: flex;
   justify-content: space-between;
   position: sticky;
@@ -14,11 +14,13 @@
 }
 
 .header_left {
+  padding: 10px;
   display: flex;
   justify-content: space-evenly;
 }
 
 .header_input {
+  width: 145px;
   display: flex;
   align-items: center;
   background-color: #eff2f5;
@@ -56,6 +58,7 @@
 }
 
 .header_info {
+  padding: 10px;
   display: flex;
   align-items: center;
 }
@@ -72,9 +75,9 @@
   background-color: #d0d2d8;
 }
 
-.header_option > a {
+.home_icon > a {
   text-decoration: none;
-  color: gray;
+  color: #2e81f4;
 }
 
 .header_avatar {
@@ -84,4 +87,12 @@
 .header_menu {
   margin-top: 40px;
   margin-left: 10px;
+}
+
+.home_icon {
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  cursor: pointer;
+  border-bottom: 3px solid #2e81f4;
 }

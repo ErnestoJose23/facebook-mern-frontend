@@ -56,7 +56,7 @@ function Header() {
         </div>
       </div>
       <div className="header_middle">
-        <div className="header_option">
+        <div className=" home_icon">
           <Link to="/">
             <HomeIcon />
           </Link>

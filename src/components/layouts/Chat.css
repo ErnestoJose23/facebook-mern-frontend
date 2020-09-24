@@ -1,0 +1,22 @@
+.chat {
+  flex: 1;
+}
+
+.chat_top > h4 {
+  margin-top: 0;
+}
+
+.chat_top {
+  padding-left: 80px;
+  color: #656768;
+  display: flex;
+  justify-content: space-around;
+}
+
+.iconChat {
+  padding-left: 15px;
+}
+
+.iconsChat {
+  margin-right: -50px;
+}
