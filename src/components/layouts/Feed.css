@@ -6,6 +6,16 @@
   text-align: center;
 }
 
+.messageSender {
+  margin-top: 25px;
+  background-color: white;
+}
+
+.messageSender_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
 .messageSender_option {
   display: flex;
   align-items: center;
@@ -22,11 +32,23 @@
   cursor: pointer;
 }
 
-.messageSender_photo {
-  background-image: url("/rsrc.php/v3/yW/r/7uW17FeunCA.png");
+.messageSender_icon {
+  background-image: url("https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/7uW17FeunCA.png");
   background-size: 26px 334px;
   background-repeat: no-repeat;
   display: inline-block;
   height: 24px;
   width: 24px;
+  padding-right: 10px;
+}
+.messageSender_photo {
+  background-position: 0 -130px;
+}
+
+.messageSender_friend {
+  background-position: 0 -104px;
+}
+
+.messageSender_activity {
+  background-position: 0 -78px;
 }

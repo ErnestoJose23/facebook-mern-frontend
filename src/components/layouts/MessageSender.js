@@ -23,7 +23,18 @@ function MessageSender() {
       </div>
       <div className="separador"></div>
       <div className="messageSender_bottom">
-        <div classname="messageSender_option">Photo/Video</div>
+        <div className="messageSender_option">
+          <div className="messageSender_icon messageSender_photo"></div>
+          <h4>Photo/Video</h4>
+        </div>
+        <div className="messageSender_option">
+          <div className="messageSender_icon messageSender_friend"></div>
+          <h4>Tag Friends</h4>
+        </div>
+        <div className="messageSender_option">
+          <div className="messageSender_icon messageSender_activity"></div>
+          <h4>Feeling/Activity</h4>
+        </div>
       </div>
     </div>
   );
