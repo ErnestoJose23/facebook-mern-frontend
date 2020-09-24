@@ -2,13 +2,15 @@
   align-items: center;
   border-bottom: 1px solid #dadde1;
   display: flex;
-  margin: 20px 16px;
+  margin: 10px 16px;
   text-align: center;
 }
 
 .messageSender {
   margin-top: 25px;
   background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.75);
 }
 
 .messageSender_bottom {
@@ -22,6 +24,8 @@
   padding: 0 30px;
   cursor: pointer;
   color: gray !important;
+  height: 35px;
+  margin: 10px;
 }
 
 .messageSender_option:hover {
