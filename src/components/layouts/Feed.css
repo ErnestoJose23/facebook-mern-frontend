@@ -5,3 +5,28 @@
   margin: 20px 16px;
   text-align: center;
 }
+
+.messageSender_option {
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  cursor: pointer;
+  color: gray !important;
+}
+
+.messageSender_option:hover {
+  background-color: #eff2f5;
+  border-radius: 10px;
+  align-items: center;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.messageSender_photo {
+  background-image: url("/rsrc.php/v3/yW/r/7uW17FeunCA.png");
+  background-size: 26px 334px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}

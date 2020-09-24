@@ -3,6 +3,7 @@
   align-items: center;
   padding-left: 20px;
   cursor: pointer;
+  width: 300px;
 }
 
 .sidebar_title {
@@ -19,4 +20,8 @@
 
 .sidebar {
   flex: 1;
+}
+
+.sidebarRow:hover {
+  background-color: #e4e6eb;
 }

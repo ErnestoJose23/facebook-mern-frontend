@@ -22,7 +22,9 @@ function MessageSender() {
         </form>
       </div>
       <div className="separador"></div>
-      <div className="messageSender_bottom"></div>
+      <div className="messageSender_bottom">
+        <div classname="messageSender_option">Photo/Video</div>
+      </div>
     </div>
   );
 }
