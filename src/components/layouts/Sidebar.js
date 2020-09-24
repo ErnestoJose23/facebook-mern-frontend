@@ -9,7 +9,7 @@ function Sidebar() {
   const { userData, setUserData } = useContext(UserContext);
   return (
     <div className="sidebar">
-      <SidebarRow title={userData.user} />
+      <SidebarRow title={userData.user} src={userData.avatar} />
       <SidebarRow
         title="COVID-19 Information Centre"
         src={"https://static.xx.fbcdn.net/rsrc.php/v3/yB/r/squBo4GNUfh.png"}

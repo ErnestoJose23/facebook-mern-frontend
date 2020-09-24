@@ -11,7 +11,7 @@ function MessageSender() {
   return (
     <div className="messageSender">
       <div className="messageSender_top">
-        <Avatar />
+        <Avatar src={userData.avatar} />
         <form>
           <input
             type="text"

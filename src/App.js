@@ -35,7 +35,10 @@ function App() {
         setUserData({
           token: token,
           user: userRes.data.displayName,
+          avatar: userRes.data.avatar,
         });
+        console.log("a ver si hay");
+        console.log(userRes.data);
       }
       console.log("En app");
       console.log(userData);

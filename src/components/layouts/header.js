@@ -37,7 +37,7 @@ function Header() {
   };
 
   useEffect(() => {
-    console.log(userData.displayName);
+    console.log(userData.avatar);
   }, []);
 
   return (
@@ -89,8 +89,8 @@ function Header() {
             aria-haspopup="true"
             onClick={handleClick}
             className="header_avatar"
+            src={userData.avatar}
           ></Avatar>
-
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}
