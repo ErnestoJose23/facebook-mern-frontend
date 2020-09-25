@@ -7,26 +7,31 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 import UserContext from "../../context/UserContext";
 import Register from "./register";
+import ErrorNotice from "../misc/ErrorNotice";
 
 function Login(state, token) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState();
 
   const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const submit = async (e) => {
     e.preventDefault();
-
-    const loginRes = await Axios.post("http://localhost:5000/users/login", {
-      email,
-      password,
-    });
-    console.log(loginRes);
-    setUserData([{ token: loginRes.data.token, user: loginRes.data.user }]);
-    localStorage.setItem("auth-token", loginRes.data.token);
-    console.log(userData);
-    history.push("/");
+    try {
+      const loginRes = await Axios.post("http://localhost:5000/users/login", {
+        email,
+        password,
+      });
+      console.log(loginRes);
+      setUserData([{ token: loginRes.data.token, user: loginRes.data.user }]);
+      localStorage.setItem("auth-token", loginRes.data.token);
+      console.log(userData);
+      history.push("/");
+    } catch (err) {
+      err.response.data.msg && setError(err.response.data.msg);
+    }
   };
 
   useEffect(() => {
@@ -80,6 +85,7 @@ function Login(state, token) {
           negocio.
         </p>
       </div>
+      {error && <ErrorNotice message={error} />}
     </div>
   );
 }

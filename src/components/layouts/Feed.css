@@ -82,3 +82,13 @@
 .messageSender_top > form > button {
   display: none;
 }
+
+.inputFile {
+  display: none;
+}
+
+.label-file {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

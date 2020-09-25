@@ -36,6 +36,7 @@ function App() {
           token: token,
           user: userRes.data.displayName,
           avatar: userRes.data.avatar,
+          user_id: userRes.data.id,
         });
         console.log("a ver si hay");
         console.log(userRes.data);

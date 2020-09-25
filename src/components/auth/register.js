@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function getModalStyle() {
   const top = 40;
-  const left = 45;
+  const left = 46.5;
 
   return {
     top: `${top}%`,
@@ -95,7 +95,6 @@ function Register() {
 
       <div className="separador"></div>
       <form className="register_form" onSubmit={submitReg}>
-        {error && <ErrorNotice message={error} />}
         <div className="register_name">
           <input
             className="register_input name_reg"
@@ -159,6 +158,7 @@ function Register() {
       >
         {bodyModal}
       </Modal>
+      {error && <ErrorNotice message={error} />}
     </div>
   );
 }
