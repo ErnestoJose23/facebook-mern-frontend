@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Axios from "axios";
 import UserContext from "../../context/UserContext";
+import ErrorNotice from "../misc/ErrorNotice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,7 @@ function Register() {
   const [passwordCheck, setPasswordCheck] = useState();
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
+  const [error, setError] = useState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -65,21 +67,25 @@ function Register() {
 
   const submitReg = async (e) => {
     e.preventDefault();
-    const displayName = name + " " + surname;
-    const newUser = { email, password, passwordCheck, displayName };
-    const registerRes = await Axios.post(
-      "http://localhost:5000/users/register",
-      newUser
-    );
-    const loginRes = await Axios.post("http://localhost:5000/users/login", {
-      email,
-      password,
-    });
-    setUserData({ token: loginRes.data.token, user: loginRes.data.user });
-    localStorage.setItem("auth-token", loginRes.data.token);
-    setEmail("");
-    setPassword("");
-    history.push("/");
+    try {
+      const displayName = name + " " + surname;
+      const newUser = { email, password, passwordCheck, displayName };
+      const registerRes = await Axios.post(
+        "http://localhost:5000/users/register",
+        newUser
+      );
+      const loginRes = await Axios.post("http://localhost:5000/users/login", {
+        email,
+        password,
+      });
+      setUserData({ token: loginRes.data.token, user: loginRes.data.user });
+      localStorage.setItem("auth-token", loginRes.data.token);
+      setEmail("");
+      setPassword("");
+      history.push("/");
+    } catch (err) {
+      err.response.data.msg && setError(err.response.data.msg);
+    }
   };
 
   const bodyModal = (
@@ -89,6 +95,7 @@ function Register() {
 
       <div className="separador"></div>
       <form className="register_form" onSubmit={submitReg}>
+        {error && <ErrorNotice message={error} />}
         <div className="register_name">
           <input
             className="register_input name_reg"
