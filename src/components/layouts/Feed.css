@@ -69,7 +69,7 @@
   display: flex;
 }
 
-.messageSender_top > form > input {
+.messageSender_input {
   outline-width: 0;
   border: none;
   padding: 5px 20px;
@@ -79,7 +79,7 @@
   width: 100%;
 }
 
-.messageSender_top > form > button {
+.messageSender_button {
   display: none;
 }
 
