@@ -6,32 +6,44 @@ import Axios from "axios";
 
 function MessageSender() {
   const { userData, setUserData } = useContext(UserContext);
-  const [title, setTitle] = useState();
-  const [file, setFile] = useState();
+  const [title, setTitle] = useState("");
+  const [file, setFile] = useState(null);
 
   const [error, setError] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("file", file);
+    const imagename = Date.now();
     const displayName = userData.user;
     const user_id = userData.user_id;
-
-    const newFeed = {
+    const FeedData = {
       displayName,
+      imagename,
       user_id,
-      title,
       file,
+      title,
     };
-    const FeedRes = Axios.post("http://localhost:5000/feed/upload", {
-      displayName,
-      user_id,
-      file,
-      title,
+    formData.append("imagename", imagename);
+
+    const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "content-type": "multipart/form-data",
       },
-    });
+    };
+    const FeedRes = Axios.post(
+      "http://localhost:5000/feed/upload",
+
+      FeedData
+    );
+
+    const FeedRess = Axios.post(
+      "http://localhost:5000/feed/uploadImg",
+      formData
+    );
+
     setTitle("");
     setFile("");
   };
@@ -63,7 +75,6 @@ function MessageSender() {
               type="file"
               className="inputFile"
               onChange={(e) => setFile(e.target.files[0])}
-              name="file"
             />
           </div>
           <div className="messageSender_option">
