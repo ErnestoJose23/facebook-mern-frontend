@@ -11,35 +11,27 @@ function MessageSender() {
 
   const [error, setError] = useState();
 
-  function addPost(postdetail) {
-    const FeedRes = Axios.post(
-      "http://localhost:5000/feed/upload",
-      postdetail,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const displayName = userData.user;
     const user_id = userData.user_id;
-    const formData = new FormData();
-    if (file != undefined) {
-      formData.append("file", file[0]);
-    }
+
     const newFeed = {
       displayName,
       user_id,
       title,
-      formData,
+      file,
     };
-    console.log(newFeed);
-    addPost(newFeed);
+    const FeedRes = Axios.post("http://localhost:5000/feed/upload", {
+      displayName,
+      user_id,
+      file,
+      title,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     setTitle("");
     setFile("");
   };
@@ -56,6 +48,7 @@ function MessageSender() {
             placeholder={`What's on your mind, ${userData.user} `}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            name="title"
           />
         </div>
         <div className="separador"></div>
@@ -70,6 +63,7 @@ function MessageSender() {
               type="file"
               className="inputFile"
               onChange={(e) => setFile(e.target.files[0])}
+              name="file"
             />
           </div>
           <div className="messageSender_option">
