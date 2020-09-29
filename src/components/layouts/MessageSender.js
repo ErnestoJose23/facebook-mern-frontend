@@ -16,9 +16,10 @@ function MessageSender() {
 
     const formData = new FormData();
     formData.append("file", file);
-    const imagename = Date.now();
+    var imagename = Date.now();
     const displayName = userData.user;
     const user_id = userData.user_id;
+
     const FeedData = {
       displayName,
       imagename,
@@ -26,26 +27,26 @@ function MessageSender() {
       file,
       title,
     };
-    formData.append("imagename", imagename);
 
     const config = {
       headers: {
         "content-type": "multipart/form-data",
       },
     };
-    const FeedRes = Axios.post(
-      "http://localhost:5000/feed/upload",
-
-      FeedData
-    );
-
-    const FeedRess = Axios.post(
+    const FeedRes = Axios.post("http://localhost:5000/feed/upload", FeedData);
+    const FeedResImg = Axios.post(
       "http://localhost:5000/feed/uploadImg",
-      formData
+      formData,
+      {
+        headers: {
+          path: imagename,
+        },
+      }
     );
 
     setTitle("");
     setFile("");
+    imagename = "";
   };
 
   return (
