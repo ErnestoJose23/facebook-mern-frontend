@@ -19,8 +19,10 @@ function MessageSender() {
 
     const formData = new FormData();
     formData.append("file", file);
-
-    var imagename = Date.now();
+    var imagename = "";
+    if (file != null) {
+      var imagename = Date.now();
+    }
     const displayName = userData.user;
     const user_id = userData.user_id;
 

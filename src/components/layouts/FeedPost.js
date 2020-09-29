@@ -5,13 +5,24 @@ import Axios from "axios";
 
 function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
   const [user, setUser] = useState([]);
+  const [img, setImg] = useState([]);
   useEffect(() => {
     Axios.get(`http://localhost:5000/users/getUser/${user_id}`).then(
       (response) => {
         setUser(response.data);
       }
     );
+    if (imagename != "") {
+      Axios.get(`http://localhost:5000/feed/getImg/${imagename}`).then(
+        (response) => {
+          setImg(response.data);
+        }
+      );
+    }
   }, []);
+  var imageform = img.image;
+  imageform.toString("base64");
+  console.log(imageform);
   return (
     <div className="feedpost">
       <div className="post_top">
