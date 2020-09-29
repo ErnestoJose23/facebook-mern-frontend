@@ -11,6 +11,7 @@ function Feed({ posts }) {
       <MessageSender />
       {posts.map((post) => (
         <FeedPost
+          user_id={post.user_id}
           displayName={post.displayName}
           title={post.title}
           imagename={post.imagename}

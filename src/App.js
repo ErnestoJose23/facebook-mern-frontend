@@ -38,11 +38,7 @@ function App() {
           avatar: userRes.data.avatar,
           user_id: userRes.data.id,
         });
-        console.log("a ver si hay");
-        console.log(userRes.data);
       }
-      console.log("En app");
-      console.log(userData);
     };
 
     checkLoggedIn();

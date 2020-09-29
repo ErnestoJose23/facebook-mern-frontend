@@ -1,14 +1,23 @@
 import { Avatar } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Feed.css";
+import Axios from "axios";
 
-function FeedPost({ displayName, timestamp, title, imagename }) {
+function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    Axios.get(`http://localhost:5000/users/getUser/${user_id}`).then(
+      (response) => {
+        setUser(response.data);
+      }
+    );
+  }, []);
   return (
     <div className="feedpost">
       <div className="post_top">
-        <Avatar className="post_avatar" />
+        <Avatar src={user.avatar} className="post_avatar" />
         <div className="post_topInfo">
-          <p>{displayName}</p>
+          <p>{user.displayName}</p>
           <span>{timestamp}</span>
         </div>
       </div>

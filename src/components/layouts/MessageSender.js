@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import "./Feed.css";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 import { DomainDisabled } from "@material-ui/icons";
 
 function MessageSender() {
@@ -11,6 +12,7 @@ function MessageSender() {
   const [file, setFile] = useState(null);
 
   const [error, setError] = useState();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,6 +87,7 @@ function MessageSender() {
     setTitle("");
     setFile("");
     imagename = "";
+    history.push("/");
   };
 
   return (
