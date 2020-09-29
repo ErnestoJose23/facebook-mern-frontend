@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import "./Feed.css";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
+import { DomainDisabled } from "@material-ui/icons";
 
 function MessageSender() {
   const { userData, setUserData } = useContext(UserContext);
@@ -16,13 +17,50 @@ function MessageSender() {
 
     const formData = new FormData();
     formData.append("file", file);
+
     var imagename = Date.now();
     const displayName = userData.user;
     const user_id = userData.user_id;
 
+    var objToday = new Date(),
+      curHour =
+        objToday.getHours() > 12
+          ? objToday.getHours() - 12
+          : objToday.getHours() < 10
+          ? "0" + objToday.getHours()
+          : objToday.getHours(),
+      curMinute =
+        objToday.getMinutes() < 10
+          ? "0" + objToday.getMinutes()
+          : objToday.getMinutes(),
+      curSeconds =
+        objToday.getSeconds() < 10
+          ? "0" + objToday.getSeconds()
+          : objToday.getSeconds(),
+      curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+    var dd = String(objToday.getDate()).padStart(2, "0");
+    var mm = String(objToday.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = objToday.getFullYear();
+    var timestamp =
+      curHour +
+      ":" +
+      curMinute +
+      ":" +
+      curSeconds +
+      " " +
+      curMeridiem +
+      " " +
+      dd +
+      "/" +
+      mm +
+      "/" +
+      yyyy;
+
+    console.log(timestamp);
     const FeedData = {
       displayName,
       imagename,
+      timestamp,
       user_id,
       file,
       title,
