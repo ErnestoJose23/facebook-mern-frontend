@@ -20,9 +20,7 @@ function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
       );
     }
   }, []);
-  var imageform = img.image;
-  imageform.toString("base64");
-  console.log(imageform);
+
   return (
     <div className="feedpost">
       <div className="post_top">
@@ -36,9 +34,8 @@ function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
       <div className="post_bottom">
         <span>{title}</span>
       </div>
-
       <div className="post_image">
-        <img src="https://www.40defiebre.com/wp-content/uploads/2015/02/blogging.png" />
+        <img src={`data:image/jpeg;base64,${img.image}`} />
       </div>
     </div>
   );
