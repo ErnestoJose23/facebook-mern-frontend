@@ -34,9 +34,13 @@ function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
       <div className="post_bottom">
         <span>{title}</span>
       </div>
-      <div className="post_image">
-        <img src={`data:image/jpeg;base64,${img.image}`} />
-      </div>
+      {img.image ? (
+        <div className="post_image">
+          <img src={`data:image/jpeg;base64,${img.image}`} />
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

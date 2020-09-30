@@ -134,3 +134,7 @@
 .post_image > img {
   width: 650px;
 }
+
+.feed {
+  margin-left: 60vh;
+}

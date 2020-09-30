@@ -1,4 +1,6 @@
 .chat {
+  position: fixed;
+  right: 30vh;
   flex: 1;
 }
 

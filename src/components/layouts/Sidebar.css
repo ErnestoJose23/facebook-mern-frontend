@@ -20,6 +20,7 @@
 
 .sidebar {
   flex: 1;
+  position: fixed;
 }
 
 .sidebarRow:hover {
