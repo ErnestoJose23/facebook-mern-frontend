@@ -2,6 +2,7 @@ import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./Feed.css";
 import Axios from "axios";
+import Comment from "./Comment";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
@@ -16,13 +17,18 @@ function FeedPost({
   post_id,
 }) {
   const [user, setUser] = useState([]);
-
+  const [comments, setComments] = useState("");
   const [img, setImg] = useState([]);
-  const [comment, setComment] = useState("");
+  const [newComment, setNewComment] = useState("");
   useEffect(() => {
     Axios.get(`http://localhost:5000/users/getUser/${user_id}`).then(
       (response) => {
         setUser(response.data);
+      }
+    );
+    Axios.get(`http://localhost:5000/comment/getComments/${post_id}`).then(
+      (response) => {
+        setComments(response.data);
       }
     );
     if (imagename != "") {
@@ -41,7 +47,7 @@ function FeedPost({
       user_id_comment,
       post_id,
       displayName,
-      comment,
+      newComment,
     };
 
     const FeedRes = Axios.post(
@@ -49,7 +55,7 @@ function FeedPost({
       CommentData
     );
 
-    console.log(CommentData);
+    console.log(comments);
   };
 
   return (
@@ -91,6 +97,20 @@ function FeedPost({
         </div>
       </div>
       <div className="separador_post"></div>
+      {comments != [] ? (
+        comments.map((comment) => (
+          <Comment
+            key={comment._id}
+            user_id={comment.user_id}
+            feed_id={comment.feed_id}
+            displayName={comment.displayName}
+            comment={comment.comment}
+          />
+        ))
+      ) : (
+        <div></div>
+      )}
+
       <div className="post_comment">
         <Avatar src={user.avatar} />
         <form className="comment_form">
@@ -98,8 +118,8 @@ function FeedPost({
             type="text"
             className="comment_input"
             placeholder="Write a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
             name="title"
           />
           <button
