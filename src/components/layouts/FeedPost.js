@@ -5,9 +5,18 @@ import Axios from "axios";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
+import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 
-function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
+function FeedPost({
+  user_id,
+  displayName,
+  timestamp,
+  title,
+  imagename,
+  post_id,
+}) {
   const [user, setUser] = useState([]);
+
   const [img, setImg] = useState([]);
   const [comment, setComment] = useState("");
   useEffect(() => {
@@ -25,6 +34,24 @@ function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
     }
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user_id_comment = user._id;
+    const CommentData = {
+      user_id_comment,
+      post_id,
+      displayName,
+      comment,
+    };
+
+    const FeedRes = Axios.post(
+      "http://localhost:5000/comment/uploadComment",
+      CommentData
+    );
+
+    console.log(CommentData);
+  };
+
   return (
     <div className="feedpost">
       <div className="post_top">
@@ -32,6 +59,9 @@ function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
         <div className="post_topInfo">
           <p>{user.displayName}</p>
           <span>{timestamp}</span>
+        </div>
+        <div className="post_right">
+          <MoreHorizOutlinedIcon />
         </div>
       </div>
 
@@ -63,15 +93,21 @@ function FeedPost({ user_id, displayName, timestamp, title, imagename }) {
       <div className="separador_post"></div>
       <div className="post_comment">
         <Avatar src={user.avatar} />
-
-        <input
-          type="text"
-          className="messageSender_input"
-          placeholder="Write a comment..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          name="title"
-        />
+        <form className="comment_form">
+          <input
+            type="text"
+            className="comment_input"
+            placeholder="Write a comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            name="title"
+          />
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="messageSender_button"
+          ></button>
+        </form>
       </div>
     </div>
   );
