@@ -138,3 +138,44 @@
 .feed {
   margin-left: 60vh;
 }
+
+.post_actions {
+  display: flex;
+  justify-content: center;
+}
+
+.post_option {
+  height: 30px;
+  width: 125px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  cursor: pointer;
+  color: gray !important;
+
+  justify-content: center;
+}
+
+.post_option:hover {
+  background-color: #eff2f5;
+  border-radius: 10px;
+  align-items: center;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.separador_post {
+  align-items: center;
+  border-bottom: 1px solid #dadde1;
+  display: flex;
+  margin: 5px 16px;
+  text-align: center;
+}
+
+.post_comment {
+  display: flex;
+  padding-right: 10px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
