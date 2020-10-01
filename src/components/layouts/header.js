@@ -17,6 +17,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { userData, setUserData } = useContext(UserContext);
+  const [search, setSearch] = useState("");
   let history = useHistory();
 
   const handleClick = (event) => {
@@ -40,6 +41,12 @@ function Header() {
     console.log(userData.avatar);
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    history.push(`/search/${search}`);
+    setSearch("");
+  };
+
   return (
     <div className="header">
       <div className="header_left">
@@ -48,12 +55,23 @@ function Header() {
             className="Logo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
           />
-        </Link>
-        <div className="header_input">
-          <SearchIcon />
+        </Link>{" "}
+        <form>
+          <div className="header_input">
+            <SearchIcon />
 
-          <input type="text" placeholder="Search Facebook" />
-        </div>
+            <input
+              type="text"
+              placeholder="Search Facebook"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="messageSender_button"
+          ></button>
+        </form>
       </div>
       <div className="header_middle">
         <div className=" home_icon">

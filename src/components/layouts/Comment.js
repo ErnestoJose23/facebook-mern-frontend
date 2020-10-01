@@ -3,17 +3,17 @@ import Axios from "axios";
 import { Avatar } from "@material-ui/core";
 import "./Feed.css";
 
-function Comment({ user_id, feed_id, displayName, comment, commentNuevo }) {
+function Comment({ comments }) {
   const [usercomment, setUsercomment] = useState();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/users/getUser/${user_id}`).then(
+    Axios.get(`http://localhost:5000/users/getUser/${comments.user_id}`).then(
       (response) => {
         setUsercomment(response.data);
       }
     );
-    console.log(commentNuevo);
-  }, [commentNuevo]);
+    console.log(comments);
+  }, []);
 
   return (
     <div className="comment">
@@ -23,8 +23,8 @@ function Comment({ user_id, feed_id, displayName, comment, commentNuevo }) {
         <div></div>
       )}
       <div className="comentario">
-        <span>{displayName}</span>
-        <p>{comment}</p>
+        <span>{comments.displayName}</span>
+        <p>{comments.comment}</p>
       </div>
     </div>
   );

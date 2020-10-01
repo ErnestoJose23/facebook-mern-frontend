@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./components/pages/home";
+import Search from "./components/pages/Search";
 import UserContext from "./context/UserContext";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
@@ -50,6 +51,7 @@ function App() {
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <PrivateRoute exact path="/" component={Home} />
+            <PrivateRoute path="/search" component={Search} />
 
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

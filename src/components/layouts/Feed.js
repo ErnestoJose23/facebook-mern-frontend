@@ -12,12 +12,13 @@ function Feed({ posts }) {
       {posts.map((post) => (
         <FeedPost
           key={post._id}
-          user_id={post.user_id}
+          user_id_post={post.user_id}
           post_id={post._id}
           displayName={post.displayName}
           title={post.title}
           imagename={post.imagename}
           timestamp={post.timestamp}
+          comments={post.comments}
         />
       ))}
     </div>

@@ -9,27 +9,24 @@ import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 
 function FeedPost({
-  user_id,
+  user_id_post,
   displayName,
   timestamp,
   title,
   imagename,
   post_id,
+  comments,
 }) {
   const [user, setUser] = useState([]);
-  const [comments, setComments] = useState("");
+  const [commentsPost, setCommentsPost] = useState(comments);
+
   const [img, setImg] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [commentNuevo, setCommentNuevo] = useState();
   useEffect(() => {
-    Axios.get(`http://localhost:5000/users/getUser/${user_id}`).then(
+    Axios.get(`http://localhost:5000/users/getUser/${user_id_post}`).then(
       (response) => {
         setUser(response.data);
-      }
-    );
-    Axios.get(`http://localhost:5000/comment/getComments/${post_id}`).then(
-      (response) => {
-        setComments(response.data);
       }
     );
     if (imagename != "") {
@@ -39,16 +36,18 @@ function FeedPost({
         }
       );
     }
+    setCommentsPost(comments);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user_id_comment = user._id;
+    const user_id = user._id;
+    const comment = newComment;
     const CommentData = {
-      user_id_comment,
+      user_id,
       post_id,
       displayName,
-      newComment,
+      comment,
     };
 
     const FeedRes = Axios.post(
@@ -56,9 +55,8 @@ function FeedPost({
       CommentData
     );
 
-    setCommentNuevo(CommentData);
-
-    console.log(comments);
+    setCommentsPost([...commentsPost, CommentData]);
+    setNewComment("");
   };
 
   return (
@@ -100,20 +98,10 @@ function FeedPost({
         </div>
       </div>
       <div className="separador_post"></div>
-      {comments != [] ? (
-        comments.map((comment) => (
-          <Comment
-            key={comment._id}
-            user_id={comment.user_id}
-            feed_id={comment.feed_id}
-            displayName={comment.displayName}
-            comment={comment.comment}
-            commentNuevo={commentNuevo}
-          />
-        ))
-      ) : (
-        <div></div>
-      )}
+
+      {commentsPost.map((comment) => (
+        <Comment key={comment._id} comments={comment} />
+      ))}
 
       <div className="post_comment">
         <Avatar src={user.avatar} />
