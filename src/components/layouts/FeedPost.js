@@ -20,6 +20,7 @@ function FeedPost({
   const [comments, setComments] = useState("");
   const [img, setImg] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const [commentNuevo, setCommentNuevo] = useState();
   useEffect(() => {
     Axios.get(`http://localhost:5000/users/getUser/${user_id}`).then(
       (response) => {
@@ -54,6 +55,8 @@ function FeedPost({
       "http://localhost:5000/comment/uploadComment",
       CommentData
     );
+
+    setCommentNuevo(CommentData);
 
     console.log(comments);
   };
@@ -105,6 +108,7 @@ function FeedPost({
             feed_id={comment.feed_id}
             displayName={comment.displayName}
             comment={comment.comment}
+            commentNuevo={commentNuevo}
           />
         ))
       ) : (

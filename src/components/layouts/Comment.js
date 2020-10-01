@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Avatar } from "@material-ui/core";
 import "./Feed.css";
 
-function Comment({ user_id, feed_id, displayName, comment }) {
+function Comment({ user_id, feed_id, displayName, comment, commentNuevo }) {
   const [usercomment, setUsercomment] = useState();
 
   useEffect(() => {
@@ -12,8 +12,9 @@ function Comment({ user_id, feed_id, displayName, comment }) {
         setUsercomment(response.data);
       }
     );
-  }, []);
-  console.log(usercomment);
+    console.log(commentNuevo);
+  }, [commentNuevo]);
+
   return (
     <div className="comment">
       {usercomment ? (
