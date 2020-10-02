@@ -18,31 +18,58 @@ function SearchSide({ search }) {
       <div className="searchside_options">
         <h4>Filters</h4>
         <div className="options_search">
-          <ArtTrackIcon className="iconSearch"></ArtTrackIcon> Posts
+          <div className="iconSearch">
+            <ArtTrackIcon></ArtTrackIcon>
+          </div>
+          Posts
         </div>
         <div className="options_search">
-          <PeopleIcon className="iconSearch" /> People
+          <div className="iconSearch">
+            <PeopleIcon />
+          </div>
+          People
         </div>
         <div className="options_search">
-          <PhotoLibraryIcon className="iconSearch" /> Photos
+          <div className="iconSearch">
+            <PhotoLibraryIcon />
+          </div>
+          Photos
         </div>
         <div className="options_search">
-          <YouTubeIcon className="iconSearch" /> Videos
+          <div className="iconSearch">
+            <YouTubeIcon />
+          </div>
+          Videos
         </div>
         <div className="options_search">
-          <StoreMallDirectoryIcon className="iconSearch" /> Marketplace
+          <div className="iconSearch">
+            <StoreMallDirectoryIcon />
+          </div>
+          Marketplace
         </div>
         <div className="options_search">
-          <FlagIcon className="iconSearch" /> Pages
+          <div className="iconSearch">
+            <FlagIcon />
+          </div>
+          Pages
         </div>
         <div className="options_search">
-          <PlaceIcon className="iconSearch" /> Places
+          <div className="iconSearch">
+            <PlaceIcon />
+          </div>
+          Places
         </div>
         <div className="options_search">
-          <DateRangeIcon className="iconSearch" /> Events
+          <div className="iconSearch">
+            <DateRangeIcon />
+          </div>
+          Events
         </div>
         <div className="options_search">
-          <LinkIcon className="iconSearch" /> Links
+          <div className="iconSearch">
+            <LinkIcon />
+          </div>
+          Links
         </div>
       </div>
     </div>

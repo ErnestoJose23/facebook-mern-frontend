@@ -32,10 +32,28 @@
 .options_search {
   display: flex;
   align-items: center;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 3mm;
+}
+
+.options_search:hover {
+  background-color: #f0f2f5;
 }
 
 .iconSearch {
   margin-right: 20px;
   background-color: #e4e6eb;
   border-radius: 999px;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchside_options {
+  overflow: scroll;
+  height: 75vh;
+  overflow-x: hidden;
 }

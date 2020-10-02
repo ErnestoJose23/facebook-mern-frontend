@@ -37,13 +37,9 @@ function Header() {
     history.push("/login");
   };
 
-  useEffect(() => {
-    console.log(userData.avatar);
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    history.push(`/search/${search}`);
+    history.push(`/search/${search}/1`);
     setSearch("");
   };
 

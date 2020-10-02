@@ -52,7 +52,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={Home} />
 
-            <Route path="/search/:searchField" component={Search} />
+            <Route path="/search/:searchField/:type" component={Search} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </Switch>

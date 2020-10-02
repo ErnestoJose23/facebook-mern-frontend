@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../components/layouts/header";
 import "./Search.css";
 import SearchSide from "../../components/layouts/SearchSide";
+import SearchBox from "../../components/layouts/SearchBox";
 
 function Search(props) {
   const {
@@ -13,6 +14,7 @@ function Search(props) {
     <div className="search">
       <Header />
       <SearchSide search={params.searchField} />
+      <SearchBox type={params.type} />
     </div>
   );
 }
