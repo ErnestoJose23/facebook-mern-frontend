@@ -57,3 +57,10 @@
   height: 75vh;
   overflow-x: hidden;
 }
+
+.searchbox {
+  max-width: 700px;
+  z-index: 99;
+  margin-left: 80vh;
+  margin-top: 40px;
+}

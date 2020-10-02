@@ -39,7 +39,7 @@ function Header() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    history.push(`/search/${search}/1`);
+    history.push(`/search/${search}/People`);
     setSearch("");
   };
 
