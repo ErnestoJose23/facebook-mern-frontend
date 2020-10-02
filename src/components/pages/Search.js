@@ -14,7 +14,7 @@ function Search(props) {
     <div className="search">
       <Header />
       <SearchSide search={params.searchField} />
-      <SearchBox type={params.type} />
+      <SearchBox type={params.type} search={params.searchField} />
     </div>
   );
 }

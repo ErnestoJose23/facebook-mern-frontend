@@ -64,3 +64,24 @@
   margin-left: 80vh;
   margin-top: 40px;
 }
+
+.search_result {
+  display: flex;
+  align-items: center;
+}
+
+.search_result > p {
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.addFriendIcon {
+  margin-left: auto;
+  background-color: #e4e6eb;
+  border-radius: 999px;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

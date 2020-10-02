@@ -1,12 +1,12 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 import "../../components/pages/Search.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
+import { Avatar } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -25,14 +25,32 @@ const useStyles = makeStyles({
   },
 });
 
-function SearchBox({ type }) {
+function SearchBox({ search, type }) {
   const classes = useStyles();
+  const [persons, setPersons] = useState([]);
+
+  useEffect(() => {
+    Axios.get(`http://localhost:5000/users/getUserName/${search}`).then(
+      (response) => {
+        setPersons(response.data);
+      }
+    );
+  }, []);
 
   return (
     <div className="searchbox">
       <Card className={classes.root}>
         <CardContent>
           <h3>{type}</h3>
+          {persons.map((person) => (
+            <div className="search_result">
+              <Avatar src={person.avatar} fontSize="large" />
+              <p>{person.displayName}</p>
+              <div className="addFriendIcon">
+                <PersonAddIcon className="addFriend" />
+              </div>
+            </div>
+          ))}
         </CardContent>
       </Card>
     </div>
