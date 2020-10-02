@@ -51,8 +51,8 @@ function App() {
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute path="/search" component={Search} />
 
+            <Route path="/search/:searchField" component={Search} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </Switch>

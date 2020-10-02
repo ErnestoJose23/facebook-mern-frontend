@@ -1,12 +1,18 @@
 import React from "react";
 import Header from "../../components/layouts/header";
+import "./Search.css";
+import SearchSide from "../../components/layouts/SearchSide";
 
 function Search(props) {
-  console.log(props);
+  const {
+    match: { params },
+  } = props;
+  console.log(params);
+
   return (
     <div className="search">
       <Header />
-      {props.match.params.searchField}
+      <SearchSide search={params.searchField} />
     </div>
   );
 }
