@@ -21,15 +21,20 @@ function FriendRequest(person) {
 
     const receiver_id = person.person._id;
     const sender_id = userData.user_id;
+    const senderName = userData.user;
+    const senderAvatar = userData.avatar;
     const requestData = {
       sender_id,
       receiver_id,
+      senderName,
+      senderAvatar,
     };
-    /*
+    console.log(requestData);
+
     const RequestRes = Axios.post(
       "http://localhost:5000/friendrequest/sendrequest",
       requestData
-    );*/
+    );
     console.log(relation);
   };
   return (

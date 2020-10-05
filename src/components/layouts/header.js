@@ -13,19 +13,35 @@ import { Link, useHistory } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import UserContext from "../../context/UserContext";
 import MenuItem from "@material-ui/core/MenuItem";
+import Axios from "axios";
+import PendingNotification from "./PendingNotification";
 
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorNot, setAnchorNot] = React.useState(null);
   const { userData, setUserData } = useContext(UserContext);
   const [search, setSearch] = useState("");
+  const [pending, setPending] = useState([]);
   let history = useHistory();
+
+  useEffect(() => {
+    Axios.get(
+      `http://localhost:5000/friendrequest/sync/${userData.user_id}/Pending`
+    ).then((response) => {
+      setPending(response.data);
+    });
+  }, [userData]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleClickNot = (event) => {
+    setAnchorNot(event.currentTarget);
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setAnchorNot(null);
   };
 
   const logout = () => {
@@ -94,9 +110,31 @@ function Header() {
           <div className="header_right_info">
             <WhatsAppIcon fontSize="small" />
           </div>
-          <div className="header_right_info">
+          <div
+            className="header_right_info"
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClickNot}
+          >
             <NotificationsIcon fontSize="small" />
+            {pending.length != 0 ? (
+              <span className="badge">{pending.length}</span>
+            ) : (
+              <div></div>
+            )}
           </div>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorNot}
+            keepMounted
+            open={Boolean(anchorNot)}
+            onClose={handleClose}
+            className="header_menu"
+          >
+            {pending.map((pendg) => (
+              <PendingNotification pending={pendg} key={pending._id} />
+            ))}
+          </Menu>
 
           <Avatar
             aria-controls="simple-menu"

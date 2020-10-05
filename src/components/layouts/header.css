@@ -96,3 +96,16 @@
   cursor: pointer;
   border-bottom: 3px solid #2e81f4;
 }
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 74px;
+  padding: 1px 7px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+.pendingnotification {
+  padding: 5px;
+}
