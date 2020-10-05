@@ -83,9 +83,7 @@ function Register() {
       setEmail("");
       setPassword("");
       history.push("/");
-    } catch (err) {
-      err.response.data.msg && setError(err.response.data.msg);
-    }
+    } catch (err) {}
   };
 
   const bodyModal = (

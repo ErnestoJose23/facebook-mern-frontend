@@ -7,6 +7,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import CardContent from "@material-ui/core/CardContent";
 
 import { Avatar } from "@material-ui/core";
+import FriendRequest from "./FriendRequest";
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
 function SearchBox({ search, type }) {
   const classes = useStyles();
   const [persons, setPersons] = useState([]);
+  const [receiver, setReceiver] = useState([]);
 
   useEffect(() => {
     Axios.get(`http://localhost:5000/users/getUserName/${search}`).then(
@@ -42,15 +44,15 @@ function SearchBox({ search, type }) {
       <Card className={classes.root}>
         <CardContent>
           <h3>{type}</h3>
-          {persons.map((person) => (
-            <div className="search_result">
-              <Avatar src={person.avatar} fontSize="large" />
-              <p>{person.displayName}</p>
-              <div className="addFriendIcon">
-                <PersonAddIcon className="addFriend" />
-              </div>
+          {type == "People" ? (
+            <div>
+              {persons.map((person) => (
+                <FriendRequest person={person} />
+              ))}
             </div>
-          ))}
+          ) : (
+            <div></div>
+          )}
         </CardContent>
       </Card>
     </div>
