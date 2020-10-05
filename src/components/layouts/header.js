@@ -129,7 +129,7 @@ function Header() {
             keepMounted
             open={Boolean(anchorNot)}
             onClose={handleClose}
-            className="header_menu"
+            className="header_pending"
           >
             {pending.map((pendg) => (
               <PendingNotification pending={pendg} key={pending._id} />

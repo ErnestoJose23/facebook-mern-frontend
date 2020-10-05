@@ -84,9 +84,16 @@
   cursor: pointer;
 }
 
-.header_menu {
-  margin-top: 40px;
-  margin-left: 10px;
+.MuiMenu-paper {
+  width: 350px;
+  left: 1165px !important;
+  max-width: 500px !important;
+}
+
+.header_pending {
+  margin-right: 250px;
+  margin-top: 49px;
+  width: 250px;
 }
 
 .home_icon {
@@ -108,4 +115,22 @@
 
 .pendingnotification {
   padding: 5px;
+  display: flex;
+}
+.FriendRquest {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+}
+
+.request_actions {
+  display: flex;
+  justify-content: center;
+}
+
+.request_button {
+  margin-right: 10px !important;
 }
