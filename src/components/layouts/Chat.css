@@ -1,7 +1,8 @@
 .chat {
   position: fixed;
-  right: 30vh;
-  flex: 1;
+  right: 0vh;
+  flex: 1 1;
+  width: 500px;
 }
 
 .chat_top > h4 {
@@ -21,4 +22,25 @@
 
 .iconsChat {
   margin-right: -50px;
+}
+
+.chat_friends {
+  padding-left: 140px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.chat_friend {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border-radius: 3mm;
+}
+.chat_friend:hover {
+  background-color: #d4d5d6;
+  cursor: pointer;
+}
+.chat_friend_name {
+  margin-left: 10px;
 }

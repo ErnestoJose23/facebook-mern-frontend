@@ -37,11 +37,18 @@ function PendingNotification(pending) {
       user2_id,
       FriendRequest_id,
     };
+
     console.log(requestData);
 
     const RequestRes = Axios.post(
       "http://localhost:5000/friendrequest/acceptrequest",
       requestData
+    );
+    const AddFriend_ = Axios.post(
+      `http://localhost:5000/friendrequest/addFriend/${pending.pending.sender_id}/${pending.pending.receiver_id}`
+    );
+    const AddFriend__ = Axios.post(
+      `http://localhost:5000/friendrequest/addFriend/${pending.pending.receiver_id}/${pending.pending.sender_id}`
     );
 
     history.push("/");
