@@ -8,7 +8,7 @@ import Axios from "axios";
 import { Avatar } from "@material-ui/core";
 
 function Chat() {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const [friends, setFriends] = useState();
   useEffect(() => {
     Axios.get(
@@ -16,8 +16,6 @@ function Chat() {
     ).then((response) => {
       setFriends(response.data);
     });
-    console.log("aqui");
-    console.log(friends);
   }, [userData]);
 
   return (
